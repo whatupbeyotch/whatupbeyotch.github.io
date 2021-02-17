@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Training An AI To Play Chess!</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=4c1ecffc83.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=4c1ecffc83" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=4c1ecffc83.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=4c1ecffc83" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=4c1ecffc83");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=4c1ecffc83") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=4c1ecffc83") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=4c1ecffc83.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=4c1ecffc83.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Nigama Vykari" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Training An AI To Play Chess!" />
+    <meta property="og:description" content="After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on chess.com and started playing." />
+    <meta property="og:url" content="http://localhost:2368/training-an/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/01/chess.png" />
+    <meta property="article:published_time" content="2020-12-08T10:01:00.000Z" />
+    <meta property="article:modified_time" content="2021-01-16T11:38:01.000Z" />
+    <meta property="article:tag" content="ML" />
+    <meta property="article:tag" content="tech" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Training An AI To Play Chess!" />
+    <meta name="twitter:description" content="After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on chess.com and started playing." />
+    <meta name="twitter:url" content="http://localhost:2368/training-an/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/01/chess.png" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Nigama Vykari " />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="ML, tech" />
+    <meta name="twitter:site" content="@nigamavykari" />
+    <meta property="og:image:width" content="1654" />
+    <meta property="og:image:height" content="1654" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Nigama Vykari",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Nigama Vykari ",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2021/01/profile-pic.jpg",
+            "width": 200,
+            "height": 200
+        },
+        "url": "http://localhost:2368/author/nigama/",
+        "sameAs": []
+    },
+    "headline": "Training An AI To Play Chess!",
+    "url": "http://localhost:2368/training-an/",
+    "datePublished": "2020-12-08T10:01:00.000Z",
+    "dateModified": "2021-01-16T11:38:01.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/01/chess.png",
+        "width": 1654,
+        "height": 1654
+    },
+    "keywords": "ML, tech",
+    "description": "After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on chess.com and started playing. ",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.40" />
+    <link rel="alternate" type="application/rss+xml" title="Nigama Vykari" href="../rss.1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    body { font-family: 'PT Serif', serif; }
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-ml tag-tech">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Nigama Vykari
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Nigama Vykari
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-machine-learning">
+      <a href="../machine-learning/index.html">Machine Learning</a>
+    </li>
+    <li class="nav-talks">
+      <a href="../talks/index.html">Talks</a>
+    </li>
+    <li class="nav-favorites">
+      <a href="../favorites/index.html">Favorites</a>
+    </li>
+    <li class="nav-social">
+      <a href="../social/index.html">Social</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="../machine-learning-in-fluid-dynamics/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/mech.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Machine Learning In Fluid Mechanics">
+                                      Machine Learning In Fluid Mechanics
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/chess.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Training An AI To Play Chess!">
+                                      Training An AI To Play Chess!
+                                    </h3>
+                                    <span class="m-recent-article__date">2 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../key-challenges-with-building-data-sets/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/scrapr-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Key Challenges With Building Data-Sets">
+                                      Key Challenges With Building Data-Sets
+                                    </h3>
+                                    <span class="m-recent-article__date">4 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../artificial-intelligence-in-healthcare-and-its-effects/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/jarvis.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Artificial Intelligence In Healthcare and its effects">
+                                      Artificial Intelligence In Healthcare and its effects
+                                    </h3>
+                                    <span class="m-recent-article__date">5 months ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/dl/index.html">DL</a>
+                            </li>
+                            <li>
+                              <a href="../tag/ml/index.html">ML</a>
+                            </li>
+                            <li>
+                              <a href="../tag/tech/index.html">tech</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/01/chess.png1/chess.png 300w../content/images/size/w600/2021/01/chess.png01/chess.png 600../content/images/size/w1000/2021/01/chess.png/01/chess.png 100../content/images/size/w2000/2021/01/chess.png1/01/chess.png 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/01/chess.png"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Training An AI To Play Chess!</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/ml/index.html" class="m-heading__meta__tag">ML</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Dec 08, 2020</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/training-an/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Training%20An%20AI%20To%20Play%20Chess!&url=http://localhost:2368/training-an/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on <a href="https://www.chess.com/home">chess.com</a> and started playing. The game is really addicting and I always end up spending at least 3 hours if I open the website. Since this was really affecting my other projects, I thought, why not train an AI to play chess? </p><p>Enough of the back story, but where do we start with this?</p><p>The first and obvious step is to have a labelled database that contains a lot of observations on real chess positions, to know which side is winning. Our algorithm needs to learn which move is good, and which one is bad. Luckily, python has a library called '<em>python-chess</em>' to help us achieve this. Install this with the following command.</p><!--kg-card-begin: markdown--><p><code>pip install python-chess==0.31.3</code></p>
+<!--kg-card-end: markdown--><p><strong>Creating the database :</strong></p><p>To create the database, we have two functions. First, we need to create a function that gives us random chess positions playing random moves.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">#importing libraries
+import chess
+import chess.engine
+import numpy
+import random
+
+#creating the board
+def random_board(max_depth=200):
+    board = chess.Board()
+    depth = random.randrange(0, max_depth)
+    
+    for _ in range(depth):
+        all_moves = list(board.legal_moves)
+        random_move = random.choice(all_moves)
+        board.push(random_move)
+        if board.is_game_over():
+            break
+    return board
+</code></pre>
+<!--kg-card-end: markdown--><p>Second, we have to create a function that will create a program called '<em>stock fish</em>' to give us the approximate score of each position. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">#creating the score
+def stockfish(board, depth):
+    with chess.SimpleEngine.popen_uci('/content/stockfish') as sf:
+        result = sf.analyse(boar, chess.engine.Limit(depth=depth))
+        score = result['score'].white().score()
+        return score
+</code></pre>
+<!--kg-card-end: markdown--><p>Now, lets see how a random position looks like -</p><!--kg-card-begin: markdown--><pre><code class="language-python:">board = random_board()
+board
+</code></pre>
+<!--kg-card-end: markdown--><p>My results looked some thing like this. It might be different for you if you run the same code.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="../content/images/2021/01/chessbord.png" class="kg-image" alt><figcaption><em>result generated with random positions.</em></figcaption></figure><p>We can now see the scores generated by stockfish after analyzing these random positions. The score I got was <strong>-5430.</strong></p><!--kg-card-begin: markdown--><pre><code class="language-python:">print(stockfish(board, 10))
+</code></pre>
+<!--kg-card-end: markdown--><p>The value '10' in the above line is the <em>depth. </em>The more we increase the depth value, the more accurate score we get. </p><p>The next step is to convert the chess board into something that a neural network can understand and learn. And the way we do that is by representing the entire board with numbers. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">squares_index = {
+  'a': 0,
+  'b': 1,
+  'c': 2,
+  'd': 3,
+  'e': 4,
+  'f': 5,
+  'g': 6,
+  'h': 7
+}
+</code></pre>
+<!--kg-card-end: markdown--><p>Now that we have defined them, its time to create some functions that can identify these positions on the chess board. </p><!--kg-card-begin: markdown--><pre><code class="language-python:"># example: h3 -&gt; 17
+def square_to_index(square):
+  letter = chess.square_name(square)
+  return 8 - int(letter[1]), squares_index[letter[0]]
+
+
+def split_dims(board):
+  # this is the 3d matrix
+  board3d = numpy.zeros((14, 8, 8), dtype=numpy.int8)
+
+  # here we add the pieces's view on the matrix
+  for piece in chess.PIECE_TYPES:
+    for square in board.pieces(piece, chess.WHITE):
+      idx = numpy.unravel_index(square, (8, 8))
+      board3d[piece - 1][7 - idx[0]][idx[1]] = 1
+    for square in board.pieces(piece, chess.BLACK):
+      idx = numpy.unravel_index(square, (8, 8))
+      board3d[piece + 5][7 - idx[0]][idx[1]] = 1
+
+  # add attacks and valid moves too
+  # so the network knows what is being attacked
+  aux = board.turn
+  board.turn = chess.WHITE
+  for move in board.legal_moves:
+      i, j = square_to_index(move.to_square)
+      board3d[12][i][j] = 1
+  board.turn = chess.BLACK
+  for move in board.legal_moves:
+      i, j = square_to_index(move.to_square)
+      board3d[13][i][j] = 1
+  board.turn = aux
+
+  return board3d
+</code></pre>
+<!--kg-card-end: markdown--><p>These functions convert the board into 14 / 8 / 8 matrix. This results in an array of matrix values of ones and zeroes representing black and white pieces respectively. You will also have two matrices that shows all the positions attacked by black and vice versa (also represented in ones and zeroes). This information is crucial for our neural network to perform well in training.</p><p>It is now time to involve tensorflow and model our network. To create the model we define a function '<em>build_model</em>'.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">import tensorflow.keras.models as models
+import tensorflow.keras.layers as layers
+import tensorflow.keras.utils as utils
+import tensorflow.keras.optimizers as optimizers
+
+
+def build_model(conv_size, conv_depth):
+  board3d = layers.Input(shape=(14, 8, 8))
+
+  # adding the convolutional layers
+  x = board3d
+  for _ in range(conv_depth):
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', activation='relu', data_format='channels_first')(x)
+  x = layers.Flatten()(x)
+  x = layers.Dense(64, 'relu')(x)
+  x = layers.Dense(1, 'sigmoid')(x)
+
+  return models.Model(inputs=board3d, outputs=x)
+</code></pre>
+<!--kg-card-end: markdown--><p>We now want to see the different layers of the neural network to understand how this is going to work - </p><!--kg-card-begin: markdown--><pre><code class="language-python:">model = build_model(32, 4)
+utils.plot_model(model, to_file='model_plot.png', show_shapes=True, show_layer_names=False)
+</code></pre>
+<!--kg-card-end: markdown--><p>If you don't understand how convolution neural nets work, I recommend <a href="localhost:2368/how-does/">reading my post on CNNs</a> or watching a YouTube video. </p><p>To improve the model or make deeper connections in the network, we could use residual networks. Try the code below, if you want to test a residual model.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">def build_model_residual(conv_size, conv_depth):
+  board3d = layers.Input(shape=(14, 8, 8))
+
+  # adding the convolutional layers
+  x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(board3d)
+  for _ in range(conv_depth):
+    previous = x
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.Activation('relu')(x)
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.Add()([x, previous])
+    x = layers.Activation('relu')(x)
+  x = layers.Flatten()(x)
+  x = layers.Dense(1, 'sigmoid')(x)
+
+  return models.Model(inputs=board3d, outputs=x)
+</code></pre>
+<!--kg-card-end: markdown--><p>And it is now time for training the model. I have trained the model on 2 gigabytes of <a href="https://drive.google.com/file/d/1YcFh-uBHflrRuQjh3rQ8CFfY2YKx7ytw/edit">dataset</a> containing labels and boards. This must be more than enough for the network to train on. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">import tensorflow.keras.callbacks as callbacks
+
+
+def get_dataset():
+	container = numpy.load('dataset.npz')
+	b, v = container['b'], container['v']
+	v = numpy.asarray(v / abs(v).max() / 2 + 0.5, dtype=numpy.float32) # normalization (0 - 1)
+	return b, v
+
+
+x_train, y_train = get_dataset()
+print(x_train.shape)
+print(y_train.shape)
+
+model.compile(optimizer=optimizers.Adam(5e-4), loss='mean_squared_error')
+model.summary()
+model.fit(x_train, y_train,
+          batch_size=2048,
+          epochs=1000,
+          verbose=1,
+          validation_split=0.1,
+          callbacks=[callbacks.ReduceLROnPlateau(monitor='loss', patience=10),
+                     callbacks.EarlyStopping(monitor='loss', patience=15, min_delta=1e-4)])
+
+model.save('model.h5')
+</code></pre>
+<!--kg-card-end: markdown--><p>Model training requires a lot of time. So, do not get worried if you don't see any results immediately. The model requires time to read the position, learn and then respond. </p><p>There are some good learning hits and some callbacks in the code to stop the training, when the model stops learning. Now, finally its time to see our model play.</p><!--kg-card-begin: markdown--><pre><code class="language-python:"># used for the minimax algorithm
+def minimax_eval(board):
+  board3d = split_dims(board)
+  board3d = numpy.expand_dims(board3d, 0)
+  return model.predict(board3d)[0][0]
+
+
+def minimax(board, depth, alpha, beta, maximizing_player):
+  if depth == 0 or board.is_game_over():
+    return minimax_eval(board)
+  
+  if maximizing_player:
+    max_eval = -numpy.inf
+    for move in board.legal_moves:
+      board.push(move)
+      eval = minimax(board, depth - 1, alpha, beta, False)
+      board.pop()
+      max_eval = max(max_eval, eval)
+      alpha = max(alpha, eval)
+      if beta &lt;= alpha:
+        break
+    return max_eval
+  else:
+    min_eval = numpy.inf
+    for move in board.legal_moves:
+      board.push(move)
+      eval = minimax(board, depth - 1, alpha, beta, True)
+      board.pop()
+      min_eval = min(min_eval, eval)
+      beta = min(beta, eval)
+      if beta &lt;= alpha:
+        break
+    return min_eval
+
+
+# this is the actual function that gets the move from the neural network
+def get_ai_move(board, depth):
+  max_move = None
+  max_eval = -numpy.inf
+
+  for move in board.legal_moves:
+    board.push(move)
+    eval = minimax(board, depth - 1, -numpy.inf, numpy.inf, False)
+    board.pop()
+    if eval &gt; max_eval:
+      max_eval = eval
+      max_move = move
+  
+  return max_move
+  
+  board = chess.Board()
+
+with chess.engine.SimpleEngine.popen_uci('/content/stockfish') as engine:
+  while True:
+    move = get_ai_move(board, 1)
+    board.push(move)
+    print(f'\n{board}')
+    if board.is_game_over():
+      break
+
+    move = engine.analyse(board, chess.engine.Limit(time=1), info=chess.engine.INFO_PV)['pv'][0]
+    board.push(move)
+    print(f'\n{board}')
+    if board.is_game_over():
+      break
+      
+!cp &quot;/content/drive/My Drive/dataset.zip&quot; /content/dataset.zip
+!unzip dataset.zip
+!rm dataset.zip
+!chmod +x stockfish
+
+import random
+random.seed(37)
+</code></pre>
+<!--kg-card-end: markdown--><p><strong>Note:</strong> You have to understand that we are not telling the model what needs to be done, rather it is learning from its observations. We just make sure the model know what is a legal move, but do not encode the game itself. </p><p>There are a lot of improvements that needs to be done to improve the speed of our network, but it turned out better than I expected. </p><p>Stay tuned :)</p><hr><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/ml/index.html" title="ML">ML</a>
+                      </li>
+                      <li>
+                        <a href="../tag/tech/index.html" title="tech">tech</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/nigama/index.html" class="m-author-picture" aria-label="Nigama Vykari ">
+                  <div style="background-image: url(../content/images/2021/01/profile-pic.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/nigama/index.html">Nigama Vykari </a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-ml tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../machine-learning-in-fluid-dynamics/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/mech.jpg" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/ml/index.html" class="m-article-card__tag">ML</a>
+      <a href="../machine-learning-in-fluid-dynamics/index.html" class="m-article-card__info-link" aria-label="Machine Learning In Fluid Mechanics">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Machine Learning In Fluid Mechanics">
+            Machine Learning In Fluid Mechanics
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>a month ago</span>
+          <span>&bull;</span>
+          <span>2 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-ml tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../key-challenges-with-building-data-sets/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/scrapr-1.jpg" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/ml/index.html" class="m-article-card__tag">ML</a>
+      <a href="../key-challenges-with-building-data-sets/index.html" class="m-article-card__info-link" aria-label="Key Challenges With Building Data-Sets">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Key Challenges With Building Data-Sets">
+            Key Challenges With Building Data-Sets
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>4 months ago</span>
+          <span>&bull;</span>
+          <span>3 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-dl tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../deep-learning-for-medical-technology/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/ai.jpg" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/dl/index.html" class="m-article-card__tag">DL</a>
+      <a href="../deep-learning-for-medical-technology/index.html" class="m-article-card__info-link" aria-label="Deep Learning For Medical Technology">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Deep Learning For Medical Technology">
+            Deep Learning For Medical Technology
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>6 months ago</span>
+          <span>&bull;</span>
+          <span>3 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://twitter.com/nigamavykari" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.1" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Nigama Vykari &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=4c1ecffc83.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/vendor.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/app.js@v=4c1ecffc83"></script>
+
+      <script defer src="../assets/js/post.js@v=4c1ecffc83"></script>
+
+
+    
+  </body>
+</html>

@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Machine Learning In Fluid Mechanics</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preload" href="../assets/css/app.css@v=4c1ecffc83.css" as="style" />
+    <link rel="preload" href="../assets/js/manifest.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/vendor/content-api.min.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/vendor.js@v=4c1ecffc83" as="script" />
+    <link rel="preload" href="../assets/js/app.js@v=4c1ecffc83" as="script" />
+    <link rel="preconnect" href="https://polyfill.io">
+    <link rel="dns-prefetch" href="https://polyfill.io">
+
+      <link rel="preload" href="../assets/css/post.css@v=4c1ecffc83.css" as="style" />
+  <link rel="preload" href="../assets/js/post.js@v=4c1ecffc83" as="script" />
+
+
+    <style>
+      /* These font-faces are here to make fonts work if the Ghost instance is installed in a subdirectory */
+
+      /* source-sans-pro-regular */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 400;
+        font-display: swap;
+        src: local('Source Sans Pro Regular'), local('SourceSansPro-Regular'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-regular.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* source-sans-pro-600 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 600;
+        font-display: swap;
+        src: local('Source Sans Pro SemiBold'), local('SourceSansPro-SemiBold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-600.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* source-sans-pro-700 */
+      @font-face {
+        font-family: 'Source Sans Pro';
+        font-style: normal;
+        font-weight: 700;
+        font-display: swap;
+        src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff2@v=4c1ecffc83") format('woff2'),
+            url("../assets/fonts/source-sans-pro/latin/source-sans-pro-700.woff@v=4c1ecffc83") format('woff');
+      }
+
+      /* iconmoon */
+      @font-face {
+        font-family: 'icomoon';
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3%253Fv=4c1ecffc83");
+        src: url("../assets/fonts/icomoon/icomoon.eot@101fc3") format('embedded-opentype'),
+        url("../assets/fonts/icomoon/icomoon.ttf@101fc3%253Fv=4c1ecffc83") format('truetype'),
+        url("../assets/fonts/icomoon/icomoon.woff@101fc3%253Fv=4c1ecffc83") format('woff'),
+        url("../assets/fonts/icomoon/icomoon.svg@101fc3") format('svg');
+      }
+    </style>
+
+    <link rel="stylesheet" type="text/css" href="../assets/css/app.css@v=4c1ecffc83.css" media="screen" />
+
+      <link rel="stylesheet" type="text/css" href="../assets/css/post.css@v=4c1ecffc83.css" media="screen" />
+
+
+    
+
+    <link rel="canonical" href="index.html" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="amp/index.html" />
+    
+    <meta property="og:site_name" content="Nigama Vykari" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Machine Learning In Fluid Mechanics" />
+    <meta property="og:description" content="With the advancement in machine learning that we have today, we can pretty much apply it to any field and benefit from it. I recently came across a video that explained about a research paper on Machine Learning In Fluid Dynamics. I found the concept to be quite intriguing and" />
+    <meta property="og:url" content="http://localhost:2368/machine-learning-in-fluid-dynamics/" />
+    <meta property="og:image" content="http://localhost:2368/content/images/2021/01/mech.jpg" />
+    <meta property="article:published_time" content="2021-01-15T17:38:36.000Z" />
+    <meta property="article:modified_time" content="2021-01-16T09:17:58.000Z" />
+    <meta property="article:tag" content="ML" />
+    <meta property="article:tag" content="tech" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Machine Learning In Fluid Mechanics" />
+    <meta name="twitter:description" content="With the advancement in machine learning that we have today, we can pretty much apply it to any field and benefit from it. I recently came across a video that explained about a research paper on Machine Learning In Fluid Dynamics. I found the concept to be quite intriguing and" />
+    <meta name="twitter:url" content="http://localhost:2368/machine-learning-in-fluid-dynamics/" />
+    <meta name="twitter:image" content="http://localhost:2368/content/images/2021/01/mech.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="Nigama Vykari " />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="ML, tech" />
+    <meta name="twitter:site" content="@nigamavykari" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1336" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "Nigama Vykari",
+        "url": "http://localhost:2368/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/favicon.ico",
+            "width": 48,
+            "height": 48
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Nigama Vykari ",
+        "image": {
+            "@type": "ImageObject",
+            "url": "http://localhost:2368/content/images/2021/01/profile-pic.jpg",
+            "width": 200,
+            "height": 200
+        },
+        "url": "http://localhost:2368/author/nigama/",
+        "sameAs": []
+    },
+    "headline": "Machine Learning In Fluid Mechanics",
+    "url": "http://localhost:2368/machine-learning-in-fluid-dynamics/",
+    "datePublished": "2021-01-15T17:38:36.000Z",
+    "dateModified": "2021-01-16T09:17:58.000Z",
+    "image": {
+        "@type": "ImageObject",
+        "url": "http://localhost:2368/content/images/2021/01/mech.jpg",
+        "width": 2000,
+        "height": 1336
+    },
+    "keywords": "ML, tech",
+    "description": "With the advancement in machine learning that we have today, we can pretty much\napply it to any field and benefit from it. I recently came across a video\n[https://www.youtube.com/watch?v&#x3D;8e3OT2K99Kw&amp;list&#x3D;PLMrJAkhIeNNQWO3ESiccZmPssvUDFHL4M&amp;index&#x3D;6] \nthat explained about a research paper on Machine Learning In Fluid Dynamics\n[https://www.youtube.com/redirect?q&#x3D;https%3A%2F%2Fwww.annualreviews.org%2Fdoi%2Fpdf%2F10.1146%2Fannurev-fluid-010719-060214&amp;redir_token&#x3D;QUFFLUhqa1VTSVVidXE3Qlk4cEJZdmFXc2o2N2N",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "http://localhost:2368/"
+    }
+}
+    </script>
+
+    <meta name="generator" content="Ghost 3.40" />
+    <link rel="alternate" type="application/rss+xml" title="Nigama Vykari" href="../rss.1" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=PT+Serif:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    body { font-family: 'PT Serif', serif; }
+</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "http://localhost:2368"
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-ml tag-tech">
+    
+
+
+
+  
+<header class="m-header with-picture js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu" aria-hidden="true"></span>
+    </button>
+      <a href="../index.html" class="m-site-name in-mobile-topbar">
+        Nigama Vykari
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav js-main-nav">
+          <nav class="m-nav__left js-main-nav-left" role="navigation" aria-label="Main menu">
+            <ul>
+                <li class="only-desktop">
+                  <a href="../index.html" class="m-site-name in-desktop-menu">
+                    Nigama Vykari
+                  </a>
+                </li>
+                
+    <li class="nav-home">
+      <a href="../index.html">Home</a>
+    </li>
+    <li class="nav-machine-learning">
+      <a href="../machine-learning/index.html">Machine Learning</a>
+    </li>
+    <li class="nav-talks">
+      <a href="../talks/index.html">Talks</a>
+    </li>
+    <li class="nav-favorites">
+      <a href="../favorites/index.html">Favorites</a>
+    </li>
+    <li class="nav-social">
+      <a href="../social/index.html">Social</a>
+    </li>
+
+              <li class="submenu-option js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Open submenu">
+                  <span class="icon-more" aria-hidden="true"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                          <div class="glide js-recent-slider">
+                            <div class="glide__track" data-glide-el="track">
+                              <div class="glide__slides">
+                                <div class="glide__slide">
+                                  <a href="index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/mech.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Machine Learning In Fluid Mechanics">
+                                      Machine Learning In Fluid Mechanics
+                                    </h3>
+                                    <span class="m-recent-article__date">a month ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../training-an/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/chess.png" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Training An AI To Play Chess!">
+                                      Training An AI To Play Chess!
+                                    </h3>
+                                    <span class="m-recent-article__date">2 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../key-challenges-with-building-data-sets/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/scrapr-1.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Key Challenges With Building Data-Sets">
+                                      Key Challenges With Building Data-Sets
+                                    </h3>
+                                    <span class="m-recent-article__date">4 months ago</span>
+                                  </a>
+                                </div>
+                                <div class="glide__slide">
+                                  <a href="../artificial-intelligence-in-healthcare-and-its-effects/index.html" class="m-recent-article">
+                                    <div class="m-recent-article__picture ">
+                                        <img src="../content/images/size/w300/2021/01/jarvis.jpg" loading="lazy" alt="">
+                                    </div>
+                                    <h3 class="m-recent-article__title js-recent-article-title" title="Artificial Intelligence In Healthcare and its effects">
+                                      Artificial Intelligence In Healthcare and its effects
+                                    </h3>
+                                    <span class="m-recent-article__date">5 months ago</span>
+                                  </a>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                    </section>
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="../tag/dl/index.html">DL</a>
+                            </li>
+                            <li>
+                              <a href="../tag/ml/index.html">ML</a>
+                            </li>
+                            <li>
+                              <a href="../tag/tech/index.html">tech</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search" aria-hidden="true"></span>
+            </button>
+            <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode" tabindex="0">
+              <label for="toggle-darkmode" class="sr-only">
+                Toggle dark mode
+              </label>
+              <input id="toggle-darkmode" type="checkbox" class="js-toggle-darkmode">
+              <div>
+                <span class="icon-moon moon" aria-hidden="true"></span>
+                <span class="icon-sunny sun" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+
+<main class="main-wrap">
+    
+  <section class="m-hero with-picture" data-aos="fade">
+    <div class="m-hero__picture in-post">
+      <img
+        srcset="../content/images/size/w300/2021/01/mech.jpg01/mech.jpg 300w../content/images/size/w600/2021/01/mech.jpg/01/mech.jpg 600../content/images/size/w1000/2021/01/mech.jpg1/01/mech.jpg 100../content/images/size/w2000/2021/01/mech.jpg21/01/mech.jpg 2000w
+        "
+        sizes="(max-width: 600px) 600px, (max-width: 1000px) 1000px, 2000px"
+        src="../content/images/size/w1000/2021/01/mech.jpg"
+        alt=""
+      />
+    </div>
+    </section>
+  
+  <article>
+    <div class="l-content in-post">
+        <div class="l-wrapper in-post  js-aos-wrapper" data-aos="fade-up"
+          data-aos-delay="300">
+          <div
+            class="l-post-content   js-progress-content">
+            <header class="m-heading">
+              <h1 class="m-heading__title in-post">Machine Learning In Fluid Mechanics</h1>
+              <div class="m-heading__meta">
+                  <a href="../tag/ml/index.html" class="m-heading__meta__tag">ML</a>
+                  <span class="m-heading__meta__divider" aria-hidden="true">&bull;</span>
+                <span class="m-heading__meta__time">Jan 15, 2021</span>
+              </div>
+            </header>
+            <div class="pos-relative js-post-content">
+              <div class="m-share">
+                <div class="m-share__content js-sticky">
+                  <a href="https://www.facebook.com/sharer/sharer.php?u=http://localhost:2368/machine-learning-in-fluid-dynamics/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                    <span class="icon-facebook" aria-hidden="true"></span>
+                  </a>
+                  <a href="https://twitter.com/intent/tweet?text=Machine%20Learning%20In%20Fluid%20Mechanics&url=http://localhost:2368/machine-learning-in-fluid-dynamics/"
+                    class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                    <span class="icon-twitter" aria-hidden="true"></span>
+                  </a>
+                  <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                    <span class="icon-arrow-top" aria-hidden="true"></span>
+                    <svg aria-hidden="true">
+                      <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p>With the advancement in machine learning that we have today, we can pretty much apply it to any field and benefit from it. I recently came across a <a href="https://www.youtube.com/watch?v=8e3OT2K99Kw&amp;list=PLMrJAkhIeNNQWO3ESiccZmPssvUDFHL4M&amp;index=6">video</a> that explained about a research paper on <em><a href="https://www.youtube.com/redirect?q=https%3A%2F%2Fwww.annualreviews.org%2Fdoi%2Fpdf%2F10.1146%2Fannurev-fluid-010719-060214&amp;redir_token=QUFFLUhqa1VTSVVidXE3Qlk4cEJZdmFXc2o2N2NpRjRmZ3xBQ3Jtc0tsa1YtcFhlQW00Z3FWOHVETXhMeWxOMWRkQi1MM3huSVdxZ0EyMC1FX2NPVDlsbFZOcmp6ZkFibURsOFhOLUExZ19jOXdtakszbWFYRzJkSFBjN1UyMTM3dTBVZWVGTElkVzg2YVZ6dEFXUmdBM3FHVQ%3D%3D&amp;v=3fOXIbycAmc&amp;event=video_description">Machine Learning In Fluid Dynamics</a>. </em>I found the concept to be quite intriguing and I wanted to share this knowledge.</p><p>There are incredible algorithms in ML on image recognition, and object detection. And apparently we could apply those techniques in fluid mechanics if we imagine the <em>'fluid'</em> or the <em>'flow field'</em> as a picture. And the reason these two fields go together is because, a lot of tasks performed in fluid mechanics are the fundamental concepts of machine learning. </p><p><strong>Note: </strong>Fluids are substances that has no fixed shape and yields easily to external pressure. It might be gases or liquids. Flow field is the distribution of density &amp; velocity of a fluid over space and time. Almost every trillion dollar industry like medical &amp; transportation, involves working with fluids. </p><blockquote>The question is how much of these advancements in ML can be actually converted into physical sciences &amp; engineering?</blockquote><h3 id="patterns-exist">Patterns Exist</h3><p>Patterns exist everywhere. Patterns exist both in machine learning &amp; fluid mechanics. When we assume our flow fields as images, every little detail does not matter. What matters is the dominant patterns which defines that particular flow field or the image. Interestingly enough, a lot of machine learning ideas of image recognition were from fluid mechanics. </p><p>For example, below is an image of cloud flow over Rishiri Islands in Japan, which resemble a simple structure that we can control and simulate. To learn more about extracting patterns, <a href="https://arc.aiaa.org/doi/10.2514/1.J056060">checkout this paper</a>. <strong>This very existence of patterns in fluids is the entry point of machine learning into fluid mechanics.</strong></p><figure class="kg-card kg-image-card"><img src="../content/images/2021/01/patterns.jpeg" class="kg-image" alt srcset="../content/images/size/w600/2021/01/patterns.jpeg 600w, ../content/images/size/w1000/2021/01/patterns.jpeg 1000w, ../content/images/2021/01/patterns.jpeg 1031w" sizes="(min-width: 720px) 720px"></figure><p>The concept of extracting patterns from images was first introduced by <strong>Sirovich</strong> in 1987 in his paper <em><a href="https://www.face-rec.org/interesting-papers/General/ld.pdf">Eigenfaces</a>. </em>In this paper, he experimented by taking a huge dataset of human face images and took the defining or dominant components of that library to get the so called <em>'eigenfaces'. </em>Basically, he was able take out the most common features of a human face from that dataset and extract those patterns. <strong>He applied the same concept to the flow field images in the same year. </strong>One of the go to algorithms developed later in fluid mechanics to extract patterns is POD or <a href="https://www.youtube.com/playlist?list=PLnMuXMcchFUQnpTWYx6byi-vYNgIY9vZp">Proper Orthogonal Decomposition</a>. </p><blockquote>Therefore we have to keep in mind - patterns exist, we can extract those patterns and get a much simpler representations of our flow.</blockquote><p>This idea that there exists lower dimensional patterns in fluids, allows us to perform very powerful things such as taking algorithms directly from image processing and applying them to flow field. It can also be used to perform tasks that need high computation power like closure models, which have very complex flow data. </p><p>Anyways, the goal of this post was not to explain how all of these concepts work, but to introduce you to the idea. I hope you find the resources in the post useful &amp; explore more in this field.</p><p>Stay tuned :)</p><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->
+                <section class="m-tags in-post">
+                  <h3 class="m-submenu-title">Tags</h3>
+                  <ul>
+                      <li>
+                        <a href="../tag/ml/index.html" title="ML">ML</a>
+                      </li>
+                      <li>
+                        <a href="../tag/tech/index.html" title="tech">tech</a>
+                      </li>
+                  </ul>
+                </section>
+            </div>
+          </div>
+        </div>
+        <section class="m-author">
+          <div class="m-author__content">
+            <div class="m-author__picture">
+              <a href="../author/nigama/index.html" class="m-author-picture" aria-label="Nigama Vykari ">
+                  <div style="background-image: url(../content/images/2021/01/profile-pic.jpg);"></div>
+              </a>
+            </div>
+            <div class="m-author__info">
+              <h4 class="m-author__name">
+                <a href="../author/nigama/index.html">Nigama Vykari </a>
+              </h4>
+              <ul class="m-author-links">
+              </ul>
+            </div>
+          </div>
+        </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider glide js-recommended-slider">
+                  <div class="glide__track" data-glide-el="track">
+                    <div class="glide__slides">
+                      
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-ml tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../training-an/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/chess.png" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/ml/index.html" class="m-article-card__tag">ML</a>
+      <a href="../training-an/index.html" class="m-article-card__info-link" aria-label="Training An AI To Play Chess!">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Training An AI To Play Chess!">
+            Training An AI To Play Chess!
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>2 months ago</span>
+          <span>&bull;</span>
+          <span>6 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-ml tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../key-challenges-with-building-data-sets/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/scrapr-1.jpg" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/ml/index.html" class="m-article-card__tag">ML</a>
+      <a href="../key-challenges-with-building-data-sets/index.html" class="m-article-card__info-link" aria-label="Key Challenges With Building Data-Sets">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Key Challenges With Building Data-Sets">
+            Key Challenges With Building Data-Sets
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>4 months ago</span>
+          <span>&bull;</span>
+          <span>3 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item glide__slide">
+  <article class="m-article-card  post tag-dl tag-tech">
+    <div class="m-article-card__picture">
+      <a href="../deep-learning-for-medical-technology/index.html" class="m-article-card__picture-link" aria-hidden="true" tabindex="-1"></a>
+        <img class="m-article-card__picture-background" src="../content/images/size/w600/2021/01/ai.jpg" loading="lazy" alt="">
+      <a href="../author/nigama/index.html" class="m-article-card__author js-tooltip" aria-label="Nigama Vykari " data-tippy-content="Posted by Nigama Vykari  ">
+          <div style="background-image: url(../content/images/size/w100/2021/01/profile-pic.jpg);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="../tag/dl/index.html" class="m-article-card__tag">DL</a>
+      <a href="../deep-learning-for-medical-technology/index.html" class="m-article-card__info-link" aria-label="Deep Learning For Medical Technology">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Deep Learning For Medical Technology">
+            Deep Learning For Medical Technology
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>6 months ago</span>
+          <span>&bull;</span>
+          <span>3 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                    </div>
+                  </div>
+                  <div data-glide-el="controls" class="glide__arrows js-controls">
+                    <button data-glide-dir="<" class="m-icon-button filled in-recommended-articles glide-prev" aria-label="Previous">
+                      <span class="icon-arrow-left" aria-hidden="true"></span>
+                    </button>
+                    <button data-glide-dir=">" class="m-icon-button filled in-recommended-articles glide-next" aria-label="Next">
+                      <span class="icon-arrow-right" aria-hidden="true"></span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+    </div>
+  </article>
+</main>
+
+
+
+    
+<div class="m-search js-search" role="dialog" aria-modal="true" aria-label="Search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close" aria-hidden="true"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <div class="pos-relative">
+        <span class="icon-search m-search-icon" aria-hidden="true"></span>
+        <label for="search-input" class="sr-only">
+          Type to search
+        </label>
+        <input id="search-input" type="text" class="m-input in-search js-input-search" placeholder="Type to search">
+      </div>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <nav class="m-footer-social">
+        <a href="https://twitter.com/nigamavykari" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter" aria-hidden="true"></span>
+        </a>
+      <a href="../rss.1" aria-label="RSS">
+        <span class="icon-rss" aria-hidden="true"></span>
+      </a>
+    </nav>
+    <p class="m-footer-copyright">
+      <span>Nigama Vykari &copy; 2021</span>
+      <span>&nbsp; &bull; &nbsp;</span>
+      <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span>
+    </p>
+    <p class="m-footer-copyright jslicense">
+      <a href="../assets/html/javascript.html@v=4c1ecffc83.html" rel="jslicense">JavaScript license information</a>
+    </p>
+  </div>
+</footer>
+
+
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="../assets/js/manifest.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/vendor/content-api.min.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/vendor.js@v=4c1ecffc83"></script>
+    <script defer src="../assets/js/app.js@v=4c1ecffc83"></script>
+
+      <script defer src="../assets/js/post.js@v=4c1ecffc83"></script>
+
+
+    
+  </body>
+</html>

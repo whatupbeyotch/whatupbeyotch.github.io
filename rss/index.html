@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0" xmlns:media="http://search.yahoo.com/mrss/"><channel><title><![CDATA[Nigama Vykari]]></title><description><![CDATA[Welcome to my website!]]></description><link>http://localhost:2368/</link><image><url>http://localhost:2368/favicon.png</url><title>Nigama Vykari</title><link>http://localhost:2368/</link></image><generator>Ghost 3.40</generator><lastBuildDate>Wed, 17 Feb 2021 06:13:14 GMT</lastBuildDate><atom:link href="http://localhost:2368/rss/" rel="self" type="application/rss+xml"/><ttl>60</ttl><item><title><![CDATA[Machine Learning In Fluid Mechanics]]></title><description><![CDATA[<p>With the advancement in machine learning that we have today, we can pretty much apply it to any field and benefit from it. I recently came across a <a href="https://www.youtube.com/watch?v=8e3OT2K99Kw&amp;list=PLMrJAkhIeNNQWO3ESiccZmPssvUDFHL4M&amp;index=6">video</a> that explained about a research paper on <em><a href="https://www.youtube.com/redirect?q=https%3A%2F%2Fwww.annualreviews.org%2Fdoi%2Fpdf%2F10.1146%2Fannurev-fluid-010719-060214&amp;redir_token=QUFFLUhqa1VTSVVidXE3Qlk4cEJZdmFXc2o2N2NpRjRmZ3xBQ3Jtc0tsa1YtcFhlQW00Z3FWOHVETXhMeWxOMWRkQi1MM3huSVdxZ0EyMC1FX2NPVDlsbFZOcmp6ZkFibURsOFhOLUExZ19jOXdtakszbWFYRzJkSFBjN1UyMTM3dTBVZWVGTElkVzg2YVZ6dEFXUmdBM3FHVQ%3D%3D&amp;v=3fOXIbycAmc&amp;event=video_description">Machine Learning In Fluid Dynamics</a>. </em>I found the concept to be quite intriguing and</p>]]></description><link>http://localhost:2368/machine-learning-in-fluid-dynamics/</link><guid isPermaLink="false">60019ff731abad2ee8f6d8eb</guid><category><![CDATA[ML]]></category><category><![CDATA[tech]]></category><dc:creator><![CDATA[Nigama Vykari ]]></dc:creator><pubDate>Fri, 15 Jan 2021 17:38:36 GMT</pubDate><media:content url="http://localhost:2368/content/images/2021/01/mech.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2021/01/mech.jpg" alt="Machine Learning In Fluid Mechanics"><p>With the advancement in machine learning that we have today, we can pretty much apply it to any field and benefit from it. I recently came across a <a href="https://www.youtube.com/watch?v=8e3OT2K99Kw&amp;list=PLMrJAkhIeNNQWO3ESiccZmPssvUDFHL4M&amp;index=6">video</a> that explained about a research paper on <em><a href="https://www.youtube.com/redirect?q=https%3A%2F%2Fwww.annualreviews.org%2Fdoi%2Fpdf%2F10.1146%2Fannurev-fluid-010719-060214&amp;redir_token=QUFFLUhqa1VTSVVidXE3Qlk4cEJZdmFXc2o2N2NpRjRmZ3xBQ3Jtc0tsa1YtcFhlQW00Z3FWOHVETXhMeWxOMWRkQi1MM3huSVdxZ0EyMC1FX2NPVDlsbFZOcmp6ZkFibURsOFhOLUExZ19jOXdtakszbWFYRzJkSFBjN1UyMTM3dTBVZWVGTElkVzg2YVZ6dEFXUmdBM3FHVQ%3D%3D&amp;v=3fOXIbycAmc&amp;event=video_description">Machine Learning In Fluid Dynamics</a>. </em>I found the concept to be quite intriguing and I wanted to share this knowledge.</p><p>There are incredible algorithms in ML on image recognition, and object detection. And apparently we could apply those techniques in fluid mechanics if we imagine the <em>'fluid'</em> or the <em>'flow field'</em> as a picture. And the reason these two fields go together is because, a lot of tasks performed in fluid mechanics are the fundamental concepts of machine learning. </p><p><strong>Note: </strong>Fluids are substances that has no fixed shape and yields easily to external pressure. It might be gases or liquids. Flow field is the distribution of density &amp; velocity of a fluid over space and time. Almost every trillion dollar industry like medical &amp; transportation, involves working with fluids. </p><blockquote>The question is how much of these advancements in ML can be actually converted into physical sciences &amp; engineering?</blockquote><h3 id="patterns-exist">Patterns Exist</h3><p>Patterns exist everywhere. Patterns exist both in machine learning &amp; fluid mechanics. When we assume our flow fields as images, every little detail does not matter. What matters is the dominant patterns which defines that particular flow field or the image. Interestingly enough, a lot of machine learning ideas of image recognition were from fluid mechanics. </p><p>For example, below is an image of cloud flow over Rishiri Islands in Japan, which resemble a simple structure that we can control and simulate. To learn more about extracting patterns, <a href="https://arc.aiaa.org/doi/10.2514/1.J056060">checkout this paper</a>. <strong>This very existence of patterns in fluids is the entry point of machine learning into fluid mechanics.</strong></p><figure class="kg-card kg-image-card"><img src="http://localhost:2368/content/images/2021/01/patterns.jpeg" class="kg-image" alt="Machine Learning In Fluid Mechanics" srcset="http://localhost:2368/content/images/size/w600/2021/01/patterns.jpeg 600w, http://localhost:2368/content/images/size/w1000/2021/01/patterns.jpeg 1000w, http://localhost:2368/content/images/2021/01/patterns.jpeg 1031w" sizes="(min-width: 720px) 720px"></figure><p>The concept of extracting patterns from images was first introduced by <strong>Sirovich</strong> in 1987 in his paper <em><a href="https://www.face-rec.org/interesting-papers/General/ld.pdf">Eigenfaces</a>. </em>In this paper, he experimented by taking a huge dataset of human face images and took the defining or dominant components of that library to get the so called <em>'eigenfaces'. </em>Basically, he was able take out the most common features of a human face from that dataset and extract those patterns. <strong>He applied the same concept to the flow field images in the same year. </strong>One of the go to algorithms developed later in fluid mechanics to extract patterns is POD or <a href="https://www.youtube.com/playlist?list=PLnMuXMcchFUQnpTWYx6byi-vYNgIY9vZp">Proper Orthogonal Decomposition</a>. </p><blockquote>Therefore we have to keep in mind - patterns exist, we can extract those patterns and get a much simpler representations of our flow.</blockquote><p>This idea that there exists lower dimensional patterns in fluids, allows us to perform very powerful things such as taking algorithms directly from image processing and applying them to flow field. It can also be used to perform tasks that need high computation power like closure models, which have very complex flow data. </p><p>Anyways, the goal of this post was not to explain how all of these concepts work, but to introduce you to the idea. I hope you find the resources in the post useful &amp; explore more in this field.</p><p>Stay tuned :)</p><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->]]></content:encoded></item><item><title><![CDATA[Training An AI To Play Chess!]]></title><description><![CDATA[After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on chess.com and started playing. ]]></description><link>http://localhost:2368/training-an/</link><guid isPermaLink="false">5ffdba1a31abad2ee8f6d782</guid><category><![CDATA[ML]]></category><category><![CDATA[tech]]></category><dc:creator><![CDATA[Nigama Vykari ]]></dc:creator><pubDate>Tue, 08 Dec 2020 10:01:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2021/01/chess.png" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2021/01/chess.png" alt="Training An AI To Play Chess!"><p>After watching a random recommended video on chess, I fell into the YouTube loop and ended up watching chess videos for more than an hour. So, I obviously created an account on <a href="https://www.chess.com/home">chess.com</a> and started playing. The game is really addicting and I always end up spending at least 3 hours if I open the website. Since this was really affecting my other projects, I thought, why not train an AI to play chess? </p><p>Enough of the back story, but where do we start with this?</p><p>The first and obvious step is to have a labelled database that contains a lot of observations on real chess positions, to know which side is winning. Our algorithm needs to learn which move is good, and which one is bad. Luckily, python has a library called '<em>python-chess</em>' to help us achieve this. Install this with the following command.</p><!--kg-card-begin: markdown--><p><code>pip install python-chess==0.31.3</code></p>
+<!--kg-card-end: markdown--><p><strong>Creating the database :</strong></p><p>To create the database, we have two functions. First, we need to create a function that gives us random chess positions playing random moves.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">#importing libraries
+import chess
+import chess.engine
+import numpy
+import random
+
+#creating the board
+def random_board(max_depth=200):
+    board = chess.Board()
+    depth = random.randrange(0, max_depth)
+    
+    for _ in range(depth):
+        all_moves = list(board.legal_moves)
+        random_move = random.choice(all_moves)
+        board.push(random_move)
+        if board.is_game_over():
+            break
+    return board
+</code></pre>
+<!--kg-card-end: markdown--><p>Second, we have to create a function that will create a program called '<em>stock fish</em>' to give us the approximate score of each position. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">#creating the score
+def stockfish(board, depth):
+    with chess.SimpleEngine.popen_uci('/content/stockfish') as sf:
+        result = sf.analyse(boar, chess.engine.Limit(depth=depth))
+        score = result['score'].white().score()
+        return score
+</code></pre>
+<!--kg-card-end: markdown--><p>Now, lets see how a random position looks like -</p><!--kg-card-begin: markdown--><pre><code class="language-python:">board = random_board()
+board
+</code></pre>
+<!--kg-card-end: markdown--><p>My results looked some thing like this. It might be different for you if you run the same code.</p><figure class="kg-card kg-image-card kg-card-hascaption"><img src="http://localhost:2368/content/images/2021/01/chessbord.png" class="kg-image" alt="Training An AI To Play Chess!"><figcaption><em>result generated with random positions.</em></figcaption></figure><p>We can now see the scores generated by stockfish after analyzing these random positions. The score I got was <strong>-5430.</strong></p><!--kg-card-begin: markdown--><pre><code class="language-python:">print(stockfish(board, 10))
+</code></pre>
+<!--kg-card-end: markdown--><p>The value '10' in the above line is the <em>depth. </em>The more we increase the depth value, the more accurate score we get. </p><p>The next step is to convert the chess board into something that a neural network can understand and learn. And the way we do that is by representing the entire board with numbers. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">squares_index = {
+  'a': 0,
+  'b': 1,
+  'c': 2,
+  'd': 3,
+  'e': 4,
+  'f': 5,
+  'g': 6,
+  'h': 7
+}
+</code></pre>
+<!--kg-card-end: markdown--><p>Now that we have defined them, its time to create some functions that can identify these positions on the chess board. </p><!--kg-card-begin: markdown--><pre><code class="language-python:"># example: h3 -&gt; 17
+def square_to_index(square):
+  letter = chess.square_name(square)
+  return 8 - int(letter[1]), squares_index[letter[0]]
+
+
+def split_dims(board):
+  # this is the 3d matrix
+  board3d = numpy.zeros((14, 8, 8), dtype=numpy.int8)
+
+  # here we add the pieces's view on the matrix
+  for piece in chess.PIECE_TYPES:
+    for square in board.pieces(piece, chess.WHITE):
+      idx = numpy.unravel_index(square, (8, 8))
+      board3d[piece - 1][7 - idx[0]][idx[1]] = 1
+    for square in board.pieces(piece, chess.BLACK):
+      idx = numpy.unravel_index(square, (8, 8))
+      board3d[piece + 5][7 - idx[0]][idx[1]] = 1
+
+  # add attacks and valid moves too
+  # so the network knows what is being attacked
+  aux = board.turn
+  board.turn = chess.WHITE
+  for move in board.legal_moves:
+      i, j = square_to_index(move.to_square)
+      board3d[12][i][j] = 1
+  board.turn = chess.BLACK
+  for move in board.legal_moves:
+      i, j = square_to_index(move.to_square)
+      board3d[13][i][j] = 1
+  board.turn = aux
+
+  return board3d
+</code></pre>
+<!--kg-card-end: markdown--><p>These functions convert the board into 14 / 8 / 8 matrix. This results in an array of matrix values of ones and zeroes representing black and white pieces respectively. You will also have two matrices that shows all the positions attacked by black and vice versa (also represented in ones and zeroes). This information is crucial for our neural network to perform well in training.</p><p>It is now time to involve tensorflow and model our network. To create the model we define a function '<em>build_model</em>'.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">import tensorflow.keras.models as models
+import tensorflow.keras.layers as layers
+import tensorflow.keras.utils as utils
+import tensorflow.keras.optimizers as optimizers
+
+
+def build_model(conv_size, conv_depth):
+  board3d = layers.Input(shape=(14, 8, 8))
+
+  # adding the convolutional layers
+  x = board3d
+  for _ in range(conv_depth):
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', activation='relu', data_format='channels_first')(x)
+  x = layers.Flatten()(x)
+  x = layers.Dense(64, 'relu')(x)
+  x = layers.Dense(1, 'sigmoid')(x)
+
+  return models.Model(inputs=board3d, outputs=x)
+</code></pre>
+<!--kg-card-end: markdown--><p>We now want to see the different layers of the neural network to understand how this is going to work - </p><!--kg-card-begin: markdown--><pre><code class="language-python:">model = build_model(32, 4)
+utils.plot_model(model, to_file='model_plot.png', show_shapes=True, show_layer_names=False)
+</code></pre>
+<!--kg-card-end: markdown--><p>If you don't understand how convolution neural nets work, I recommend <a href="localhost:2368/how-does/">reading my post on CNNs</a> or watching a YouTube video. </p><p>To improve the model or make deeper connections in the network, we could use residual networks. Try the code below, if you want to test a residual model.</p><!--kg-card-begin: markdown--><pre><code class="language-python:">def build_model_residual(conv_size, conv_depth):
+  board3d = layers.Input(shape=(14, 8, 8))
+
+  # adding the convolutional layers
+  x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(board3d)
+  for _ in range(conv_depth):
+    previous = x
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.Activation('relu')(x)
+    x = layers.Conv2D(filters=conv_size, kernel_size=3, padding='same', data_format='channels_first')(x)
+    x = layers.BatchNormalization()(x)
+    x = layers.Add()([x, previous])
+    x = layers.Activation('relu')(x)
+  x = layers.Flatten()(x)
+  x = layers.Dense(1, 'sigmoid')(x)
+
+  return models.Model(inputs=board3d, outputs=x)
+</code></pre>
+<!--kg-card-end: markdown--><p>And it is now time for training the model. I have trained the model on 2 gigabytes of <a href="https://drive.google.com/file/d/1YcFh-uBHflrRuQjh3rQ8CFfY2YKx7ytw/edit">dataset</a> containing labels and boards. This must be more than enough for the network to train on. </p><!--kg-card-begin: markdown--><pre><code class="language-python:">import tensorflow.keras.callbacks as callbacks
+
+
+def get_dataset():
+	container = numpy.load('dataset.npz')
+	b, v = container['b'], container['v']
+	v = numpy.asarray(v / abs(v).max() / 2 + 0.5, dtype=numpy.float32) # normalization (0 - 1)
+	return b, v
+
+
+x_train, y_train = get_dataset()
+print(x_train.shape)
+print(y_train.shape)
+
+model.compile(optimizer=optimizers.Adam(5e-4), loss='mean_squared_error')
+model.summary()
+model.fit(x_train, y_train,
+          batch_size=2048,
+          epochs=1000,
+          verbose=1,
+          validation_split=0.1,
+          callbacks=[callbacks.ReduceLROnPlateau(monitor='loss', patience=10),
+                     callbacks.EarlyStopping(monitor='loss', patience=15, min_delta=1e-4)])
+
+model.save('model.h5')
+</code></pre>
+<!--kg-card-end: markdown--><p>Model training requires a lot of time. So, do not get worried if you don't see any results immediately. The model requires time to read the position, learn and then respond. </p><p>There are some good learning hits and some callbacks in the code to stop the training, when the model stops learning. Now, finally its time to see our model play.</p><!--kg-card-begin: markdown--><pre><code class="language-python:"># used for the minimax algorithm
+def minimax_eval(board):
+  board3d = split_dims(board)
+  board3d = numpy.expand_dims(board3d, 0)
+  return model.predict(board3d)[0][0]
+
+
+def minimax(board, depth, alpha, beta, maximizing_player):
+  if depth == 0 or board.is_game_over():
+    return minimax_eval(board)
+  
+  if maximizing_player:
+    max_eval = -numpy.inf
+    for move in board.legal_moves:
+      board.push(move)
+      eval = minimax(board, depth - 1, alpha, beta, False)
+      board.pop()
+      max_eval = max(max_eval, eval)
+      alpha = max(alpha, eval)
+      if beta &lt;= alpha:
+        break
+    return max_eval
+  else:
+    min_eval = numpy.inf
+    for move in board.legal_moves:
+      board.push(move)
+      eval = minimax(board, depth - 1, alpha, beta, True)
+      board.pop()
+      min_eval = min(min_eval, eval)
+      beta = min(beta, eval)
+      if beta &lt;= alpha:
+        break
+    return min_eval
+
+
+# this is the actual function that gets the move from the neural network
+def get_ai_move(board, depth):
+  max_move = None
+  max_eval = -numpy.inf
+
+  for move in board.legal_moves:
+    board.push(move)
+    eval = minimax(board, depth - 1, -numpy.inf, numpy.inf, False)
+    board.pop()
+    if eval &gt; max_eval:
+      max_eval = eval
+      max_move = move
+  
+  return max_move
+  
+  board = chess.Board()
+
+with chess.engine.SimpleEngine.popen_uci('/content/stockfish') as engine:
+  while True:
+    move = get_ai_move(board, 1)
+    board.push(move)
+    print(f'\n{board}')
+    if board.is_game_over():
+      break
+
+    move = engine.analyse(board, chess.engine.Limit(time=1), info=chess.engine.INFO_PV)['pv'][0]
+    board.push(move)
+    print(f'\n{board}')
+    if board.is_game_over():
+      break
+      
+!cp &quot;/content/drive/My Drive/dataset.zip&quot; /content/dataset.zip
+!unzip dataset.zip
+!rm dataset.zip
+!chmod +x stockfish
+
+import random
+random.seed(37)
+</code></pre>
+<!--kg-card-end: markdown--><p><strong>Note:</strong> You have to understand that we are not telling the model what needs to be done, rather it is learning from its observations. We just make sure the model know what is a legal move, but do not encode the game itself. </p><p>There are a lot of improvements that needs to be done to improve the speed of our network, but it turned out better than I expected. </p><p>Stay tuned :)</p><hr><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->]]></content:encoded></item><item><title><![CDATA[Key Challenges With Building Data-Sets]]></title><description><![CDATA[<p>When we try to apply machine learning to a data set, we usually split it into training and testing sets. The former used for development and selection of various models, the later is for reporting test results. The training set is further divided into “training set”(model development) and “validation</p>]]></description><link>http://localhost:2368/key-challenges-with-building-data-sets/</link><guid isPermaLink="false">5ffef60e31abad2ee8f6d870</guid><category><![CDATA[ML]]></category><category><![CDATA[tech]]></category><dc:creator><![CDATA[Nigama Vykari ]]></dc:creator><pubDate>Thu, 08 Oct 2020 13:31:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2021/01/scrapr-1.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2021/01/scrapr-1.jpg" alt="Key Challenges With Building Data-Sets"><p>When we try to apply machine learning to a data set, we usually split it into training and testing sets. The former used for development and selection of various models, the later is for reporting test results. The training set is further divided into “training set”(model development) and “validation set” (model tuning). However, there are 3 key challenges with building these data models <strong>in context of medicine</strong>. Read more about these similar challenges <a href="https://healthitanalytics.com/news/top-10-challenges-of-big-data-analytics-in-healthcare">here</a>.</p><p>Before we see what they are, let us understand some terminology used with these sets which can be often confusing.</p><ul><li>Training Set = Development Set</li><li>Validation Set = Tuning Set = Dev Set</li><li>Testing Set = Holdout Set = Validation Set</li></ul><h2 id="challenge-1-patient-overlap">Challenge 1 : Patient Overlap</h2><p>This problem arises when same data of one patient is sampled as training and testing sets separately. Lets say a patient comes for an X-ray of her lungs, two times in a year. Both times, lets say she is wearing a necklace while the X-ray is being taken. When we take this patient’s data for sampling, one of her X-ray is classified as “training set” and the other as “testing set”.</p><p>After we train our model, the result showed the patient as ‘Normal’ (Which is the right outcome). But the real problem here comes when the algorithm is being trained, and it might have remembered the output ‘Normal’ when the patient is wearing a necklace. It is possible that our models can memorize certain unique aspects of the patient. This helps the algorithm to get the right answer.</p><figure class="kg-card kg-image-card"><img src="https://thebmecorner.com/wp-content/uploads/2020/08/jonathan-borba-v_2FRXEba94-unsplash-1-1024x683.jpg" class="kg-image" alt="Key Challenges With Building Data-Sets"></figure><p><em>Patient overlap is very common challenge while sampling data.</em></p><p>This leads to an <strong>overly optimistic performance</strong> which could manipulate us to think that our model is better than it actually is. The most effective way to overcome this is to make sure the the patient’s scans or X-rays occur only in one of the sampling sets. This way, even if the model memorizes the outcome, it does not help it to get a higher performance. This happens because the model does not see the data as belonging to the same patient.</p><h2 id="challenge-2-set-sampling">Challenge 2 : Set Sampling</h2><p>Medical data sets are very small and does not contain many examples for each disease. Sometimes, the size of the test set is only a very small fraction of full data (like 10%) and other times, the test set needs to be annotated by human readers. So we we certainly cannot expect the to read such large amount of information. The challenge here is that when we’re sampling a test set, it is mostly random sampling. Out of hundreds of examples we might not sample any patients that actually have a disease. Thus, we would have no way to actually test the performance of the model on these cases.</p><p>One way to tackle this problem is, when creating the test sets, sample them in such a way that we have at least X% of examples of a minority class. This is simply a class in which we have few examples. This ensures the study will have sufficient numbers to get a good estimate of performance of the model both on non-diseased and diseased examples. Once we sample the test sets, typically, the validation set is sampled next before training.</p><figure class="kg-card kg-image-card"><img src="https://thebmecorner.com/wp-content/uploads/2020/08/stephen-dawson-qwtCeJ5cLYs-unsplash-1024x737.jpg" class="kg-image" alt="Key Challenges With Building Data-Sets"></figure><p><em>Medical data is very often very small and highly classified.</em></p><p>Because we want our validation set to reflect the distribution in the test set, typically, the same sampling strategy is used. We might once again decide to have hundreds of examples in the validation set. Finally the remaining patients could be included in the training.</p><h2 id="challenge-3-reference-standards">Challenge 3 : Reference Standards</h2><p>However smart our AI models may be, we still trust a professional’s opinion. There may also be cases where two professionals might come to a disagreement. For example, two radiologists while examining an X-Ray might have different opinions about a patient’s case. One might say they have pneumonia and the other might say they don’t. This situation is referred as <strong>inter-observer disagreement</strong> and happens a lot in medical field.</p><p>One simple way to solve this problem is by asking the professionals to <strong>discuss</strong> and come to a decision together. Else, we can solve the problem by taking some additional tests to confirm the ground truth. But, there is a possibility that there are no additional tests available. Therefore, having a reliable ground truth, with an existing data sets often has to use the first method.</p><p>Stay Tuned!</p><hr><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->]]></content:encoded></item><item><title><![CDATA[Artificial Intelligence In Healthcare and its effects]]></title><description><![CDATA[<p>Artificial intelligence in healthcare is going to bring wonderful changes to medical industry. While the affect of AI is deployed in many fields, healthcare is a platform which is ripe for transformation and also adopted by many start-ups. AI will contribute additional 15.7 trillion to world economy by 2030.</p>]]></description><link>http://localhost:2368/artificial-intelligence-in-healthcare-and-its-effects/</link><guid isPermaLink="false">5ffc496131abad2ee8f6d6dd</guid><category><![CDATA[tech]]></category><dc:creator><![CDATA[Nigama Vykari ]]></dc:creator><pubDate>Tue, 08 Sep 2020 12:50:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2021/01/jarvis.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2021/01/jarvis.jpg" alt="Artificial Intelligence In Healthcare and its effects"><p>Artificial intelligence in healthcare is going to bring wonderful changes to medical industry. While the affect of AI is deployed in many fields, healthcare is a platform which is ripe for transformation and also adopted by many start-ups. AI will contribute additional 15.7 trillion to world economy by 2030. It has most impact on health care compared to other fields.</p><p>We are already using AI in our daily lives without even realizing it. Starting from voice assistance in your phone to self-driving cars like TESLA, the applications of AI are endless. In fact, the researches at MIT are trying to predict future using AI. How cool is that!</p><p>Before we discuss how it effects the healthcare industry, let us quickly understand what AI is.</p><figure class="kg-card kg-image-card"><img src="https://images.unsplash.com/photo-1563209259-b2fa97148ce1?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" class="kg-image" alt="Artificial Intelligence In Healthcare and its effects"></figure><h2 id="what-is-ai"><strong>What is AI?</strong></h2><p>Simply put, it is the development of computer systems which are capable of performing tasks that usually require human intelligence. These tasks may include decision making, detection of objects or persons, solving critical problems, etc. which gives increased accuracy in solutions.</p><h2 id="impact-of-artificial-intelligence-on-healthcare"><strong>Impact of Artificial intelligence on healthcare</strong></h2><p>There are two types of AI currently in use. The first type is <strong><em>General AI</em></strong>  which teaches  computer to do everything that a human can and possibly everything that a human cannot do. The second type is <strong><em>Narrow AI</em></strong> which concentrates on specific tasks and excel in those areas. The later one is now being applied in medicine and also the reason for such large scale success.</p><p>why is the impact huge on healthcare? Well, we can narrow it down to two most important reasons.</p><ul><li>High availability of medical data.</li><li>Development of complex algorithms.</li></ul><p>All computer applications are developed based on data. Which means, a computer or an algorithm can work according to data or the information that we feed into the system. If there is no data, it becomes hard for a computer system to find a solution and potentially run properly. Therefore, more the data, more advantage of developing computer applications.</p><p>But what happens when there is too much data (as in medical data)?This is where the complex algorithms like deep learning and artificial neural networks comes into picture. The tasks became much easier for computers due to advent of these technologies. For example, AI will become the mine for medical records. It will help in re-designing treatment plants and creating precision medicine. It can revolutionize drug design (<em>patterns)</em>, making them cost effective.</p><p>Artificial intelligence can be used in healthcare organizations for collecting huge amount of data using AI based robots which re-format and implements cognitive technology to provide more consistent access.</p><h2 id="how-big-is-medical-data"><strong>How big is medical data?</strong></h2><p>Let's take an example to understand how much medical data we produce and how AI comes to our rescue.</p><p>According to The Human Genome Project , every human contain 20,000 to 25,000 genes. And these genes contain 2 million DNA base pairs which can vary in size and shape. Let's not forget this is only genomic data. There is proteomic data, metabolomics data, mythylomic data, microbiomic data and the list goes on to the subjects we don't even know existed. Also, this is only one human we're talking about. Imagine people with rare type of cancers and other diseases. The data may change based on the type of mutations and other conditions.</p><p>Besides that, there is a lot of data in medical field like physicians entering into electronic medical records, reports, laboratory data, radiology data and so on.</p><p>The job of AI is to synthesize this information. But there is a lot of disconnect between what technology is really doing and what people think it is doing. We tend to think that AI is constantly churning on this huge amount of data to just give the RIGHT answer and RIGHT recommendations. The reality is artificial intelligence in healthcare did not reach that level. As mentioned earlier, some data is images, some data is numbers, and some data is text. We haven't yet figured out how to use this information collaboratively and how to simplify it.</p><p>This is not to say that we will not be able to do it. Maybe it can take longer than expected considering how huge the industry is.</p><p>stay tuned!</p><hr><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->]]></content:encoded></item><item><title><![CDATA[Deep Learning For Medical Technology]]></title><description><![CDATA[<p>Deep learning in medical technology is becoming more accurate and advanced everyday. Deep learning is a collection of machine learning techniques which can be used to feature hierarchies often based on ANNs (Artificial Neural Networks). A deep learning algorithm can do the tasks that a machine learning model cannot, and</p>]]></description><link>http://localhost:2368/deep-learning-for-medical-technology/</link><guid isPermaLink="false">5ffc49b531abad2ee8f6d6e5</guid><category><![CDATA[DL]]></category><category><![CDATA[tech]]></category><dc:creator><![CDATA[Nigama Vykari ]]></dc:creator><pubDate>Sat, 08 Aug 2020 12:51:00 GMT</pubDate><media:content url="http://localhost:2368/content/images/2021/01/ai.jpg" medium="image"/><content:encoded><![CDATA[<img src="http://localhost:2368/content/images/2021/01/ai.jpg" alt="Deep Learning For Medical Technology"><p>Deep learning in medical technology is becoming more accurate and advanced everyday. Deep learning is a collection of machine learning techniques which can be used to feature hierarchies often based on ANNs (Artificial Neural Networks). A deep learning algorithm can do the tasks that a machine learning model cannot, and this does not work the other way around. Meaning, we can apply deep learning to a bit more crucial tasks and data.</p><p>To understand why this is the case, we need to go through how ML models work and their limitations. Later, we discuss how deep learning helps to overcome those challenges.</p><figure class="kg-card kg-image-card"><img src="https://images.unsplash.com/photo-1591696331111-ef9586a5b17a?ixlib=rb-1.2.1&amp;q=85&amp;fm=jpg&amp;crop=entropy&amp;cs=srgb" class="kg-image" alt="Deep Learning For Medical Technology"></figure><h2 id="the-3-methods-of-machine-learning"><strong>The 3 methods of machine learning</strong></h2><p>Anyone who is familiar with ML, are aware of these three basic learning processes.</p><ul><li>Supervised Learning</li><li>Unsupervised Learning</li><li>Reinforcement Learning</li></ul><p>Let's understand each of them one by one.</p><h3 id="1-supervised-learning"><strong>1. Supervised Learning</strong></h3><p>Can you differentiate between an apple and a pomegranate? Yes, you can. What about when you were one year old? Probably not. Even if you did, it was because someone guided you many times by showing what an apple looks like, and what other fruits look like. Overtime, it is stored in our brain and we get better at differentiating. This case is a lot similar with a machine.</p><p>In supervised learning, a training data set is fed into an algorithm and it produces a model as it learns. This method always uses 'labelled data' to train the models. Again, a test data is given to the same model, to see its accuracy. The testing process is repeated until the algorithm gives a minimum loss percentage. Minimum loss percentage means the machine is more inclined towards giving a right output.</p><h3 id="2-unsupervised-learning"><strong>2. Unsupervised Learning</strong></h3><p>Adults like you and me, do not need guidance to do our daily tasks. We can work out things on our own depending on the situation.</p><p>Similarly, in unsupervised learning, a machine is trained on an unlabeled data without any guidance. When the data is unlabeled, the model tries to first classify the information into classes. The machine has to figure out the data set given and has to find all the hidden patterns to give a probability of what might be the right output.</p><h3 id="3-reinforcement-learning"><strong>3. Reinforcement Learning</strong></h3><p>Imagine a hypothetical situation where a robot/machine is placed between fire and ice. It is encouraged in a patterned behavior based on hit and trail methods. The machine first touches the fire, and knows that it can harm. Next, it touches the water and nothing happens. This outcome is stored in the algorithm.</p><p>Now, the machine has a knowledge (reward) of which action can bring negative outcomes. When a new data set is given, the machine once again starts testing the new environment until it gets a 'reward'.</p><h2 id="limitations-of-machine-learning"><strong>Limitations of machine learning</strong></h2><p>Our main goal is to find out why deep learning is better for medical technology. But lets take a look at the setbacks of ML that lead us to deep learning.</p><ul><li>Machine Learning models are not useful while working with high dimensional data like medical data.</li><li>'Feature extraction' is difficult in machine learning.</li><li>It is a huge challenge for machine learning when it comes to complex problems such as object detection (Note that this is very important in analyzing medical scans).</li><li>Machine Learning also cannot solve some of the crucial AI tasks like NLP (Natural Language Processing).</li></ul><h2 id="deep-learning-a-better-tool-for-medical-technology"><strong>Deep Learning : A better tool for medical technology</strong></h2><p>Every model is implemented through Artificial Neural Networks (ANNs) in deep learning. The inspiration behind a neural network is the actual biological neuron.</p><p>One type of artificial neuron is called 'Perceptron'.</p><p>If there is a data set that we want to train, we assign some 'weights' (values) to each input function. Say input functions are expressed as x1, x2, x3........xn. And, weights are represented by w1, w2, w3,......wn. The summation of these weights and inputs is given to a 'transfer function'.</p><p>Now, there are two points to remember.</p><ul><li>Higher the value of 'W', higher is the importance of the function.</li><li>After summation, the values are sent into an 'activation function' which provides a threshold value for the perceptron to fire (activate).</li></ul><p>Deep learning models require a little guidance, but they are capable of focusing on correct features and patterns by themselves. For instance, they also partially solve the problem of working with high dimensional medical data. With the help of many learning algorithms as mentioned above, deep learning models became much reliable source</p><p>A point to keep in mind is that both machine learning and deep learning together help to solve these challenges. This is just to let you know few limitations of ML which were solved by deep learning. Today, these models are helping physicians and surgeons all around the world to interpret many scans in matter of seconds.</p><p>Stay tuned 🙂</p><hr><!--kg-card-begin: html--><div class="typeform-widget" data-url="https://form.typeform.com/to/XhlV9tN8?typeform-medium=embed-snippet" style="width: 100%; height: 500px;"></div> <script> (function() { var qs,js,q,s,d=document, gi=d.getElementById, ce=d.createElement, gt=d.getElementsByTagName, id="typef_orm", b="https://embed.typeform.com/"; if(!gi.call(d,id)) { js=ce.call(d,"script"); js.id=id; js.src=b+"embed.js"; q=gt.call(d,"script")[0]; q.parentNode.insertBefore(js,q) } })() </script><!--kg-card-end: html-->]]></content:encoded></item></channel></rss>
